@@ -9,9 +9,9 @@ namespace Eventinator.ViewModels {
 
         public string LOL { get => "\f118\n10"; }
         private readonly ObservableCollection<CityEvent> eventsList = new() {
-            new CityEvent(),
-            new CityEvent(),
-            new CityEvent()
+            new CityEvent("lol"),
+            new CityEvent("lol"),
+            new CityEvent("lol")
         };
         public ObservableCollection<CityEvent> EventsList { get => eventsList; }
     }
