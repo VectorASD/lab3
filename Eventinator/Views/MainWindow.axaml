@@ -7,7 +7,22 @@
 		Width="800" Height="800"
         x:Class="Eventinator.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Eventinator">
+        Title="Eventinator"
+		xmlns:local="clr-namespace:Eventinator.Models">
+
+	<Window.ContentTemplate>
+		<DataTemplate>
+			<StackPanel>
+				<Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto">
+					<TextBlock Grid.Row="0" Grid.Column="0">First Name:</TextBlock>
+					<TextBlock Grid.Row="0" Grid.Column="1" Text="LOL"/>
+					<TextBlock Grid.Row="1" Grid.Column="0">Last Name:</TextBlock>
+					<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Yeah}"/>
+				</Grid>
+			</StackPanel>
+		</DataTemplate>
+	</Window.ContentTemplate>
+	
 	<Window.Styles>
 
 		<Style Selector="TabControl">
@@ -59,10 +74,17 @@
 			</StackPanel>
 		</TabItem>
 		<TabItem Header="Triangle" VerticalAlignment="Center">
-			<StackPanel>
-				<TextBlock Text="I am in the triangle page ! I'll put a button to show you that each page contains what you want." HorizontalAlignment="Left" VerticalAlignment="Center"/>
-				<Button>A button in the triangle page !</Button>
-			</StackPanel>
+			<WrapPanel>
+				<StackPanel>
+					<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+					<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="{Binding LOL}"/>
+				</StackPanel>
+				<StackPanel>
+					<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+					<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="{Binding LOL}"/>
+				</StackPanel>
+				<local:CityEvent Yeah="10"/>
+			</WrapPanel>
 		</TabItem>
 		<TabItem Header="Square" VerticalAlignment="Center">
 			<StackPanel Orientation="Horizontal">
