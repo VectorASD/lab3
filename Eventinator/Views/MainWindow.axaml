@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Eventinator.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+		Width="800" Height="800"
+        x:Class="Eventinator.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Eventinator">
+	<Window.Styles>
+
+		<Style Selector="TabControl">
+			<Setter Property="Background" Value="#F0F0F0"/>
+			<Setter Property="Height" Value="120"/>
+		</Style>
+		<Style Selector="TabControl WrapPanel">
+			<Setter Property="Background" Value="#2B579A"/>
+		</Style>
+
+		<Style Selector="TabItem">
+			<Setter Property="FontSize" Value="12"/>
+			<Setter Property="Height" Value="34"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="Background" Value="#2B579A"/>
+			<Setter Property="Foreground" Value="#F0F0F0"/>
+			<Setter Property="Margin" Value="0 0 0 0"/>
+			<Setter Property="Padding" Value="10 0"/>
+		</Style>
+		<Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="#124078"/>
+		</Style>
+
+		<Style Selector="TabItem:focus">
+			<Setter Property="Foreground" Value="#2B579A"/>
+			<Setter Property="Margin" Value="0 0 0 0"/>
+			<Setter Property="Padding" Value="10 0"/>
+		</Style>
+		<Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="#f0f0f0"/>
+		</Style>
+
+		<Style Selector="TabItem:selected">
+			<Setter Property="Foreground" Value="#2B579A"/>
+			<Setter Property="Margin" Value="0 0 0 0"/>
+			<Setter Property="Padding" Value="10 0"/>
+		</Style>
+		<Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="#f0f0f0"/>
+		</Style>
+
+	</Window.Styles>
+	
+	<TabControl>
+		<TabItem Header="Circle" VerticalAlignment="Center">
+			<StackPanel>
+				<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="{Binding LOL}"/>
+			</StackPanel>
+		</TabItem>
+		<TabItem Header="Triangle" VerticalAlignment="Center">
+			<StackPanel>
+				<TextBlock Text="I am in the triangle page ! I'll put a button to show you that each page contains what you want." HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				<Button>A button in the triangle page !</Button>
+			</StackPanel>
+		</TabItem>
+		<TabItem Header="Square" VerticalAlignment="Center">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Square : " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				<Rectangle Fill="Blue" Width="63" Height="41"/>
+			</StackPanel>
+		</TabItem>
+	</TabControl>
+</Window>
