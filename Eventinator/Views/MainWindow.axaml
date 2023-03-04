@@ -9,19 +9,6 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="Eventinator"
 		xmlns:local="clr-namespace:Eventinator.Models">
-
-	<Window.ContentTemplate>
-		<DataTemplate>
-			<StackPanel>
-				<Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto">
-					<TextBlock Grid.Row="0" Grid.Column="0">First Name:</TextBlock>
-					<TextBlock Grid.Row="0" Grid.Column="1" Text="LOL"/>
-					<TextBlock Grid.Row="1" Grid.Column="0">Last Name:</TextBlock>
-					<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Yeah}"/>
-				</Grid>
-			</StackPanel>
-		</DataTemplate>
-	</Window.ContentTemplate>
 	
 	<Window.Styles>
 
@@ -65,12 +52,37 @@
 		</Style>
 
 	</Window.Styles>
+
+	<StackPanel>
+		<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="Welcome &#xf118; Back"/>
+		<Button FontFamily="Fonts/fontawesome.ttf" Content="Welcome &#xf118; Back"/>
+		<Button FontFamily="Fonts/fontawesome.odt" Content="Welcome &#xf118; Back"/>
+		<Button FontFamily="fontawesome.ttf" Content="Welcome &#xf118; Back"/>
+		<Button FontFamily="fontawesome" Content="Welcome &#xf118; Back"/>
+		<Button FontFamily="/Assets/Fonts/fontawesome" Content="Welcome &#xf118; Back"/>
+		<ItemsControl Items="{Binding Items}">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate DataType="{x:Type local:Item}">
+					<Grid Margin="10" RowDefinitions="0.5*,0.5*">
+						<Rectangle Height="100" Width="100" Fill="{Binding Color}"/>
+						<TextBlock Grid.Row="1" Text="{Binding Name}"/>
+
+					</Grid>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+		</ItemsControl>
+	</StackPanel>
 	
-	<TabControl>
+	<!--<TabControl>
 		<TabItem Header="Circle" VerticalAlignment="Center">
 			<StackPanel>
 				<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-				<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="{Binding LOL}"/>
+				<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="Welcome &#xf118; Back"/>
 			</StackPanel>
 		</TabItem>
 		<TabItem Header="Triangle" VerticalAlignment="Center">
@@ -83,7 +95,6 @@
 					<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 					<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="{Binding LOL}"/>
 				</StackPanel>
-				<local:CityEvent Yeah="10"/>
 			</WrapPanel>
 		</TabItem>
 		<TabItem Header="Square" VerticalAlignment="Center">
@@ -92,5 +103,5 @@
 				<Rectangle Fill="Blue" Width="63" Height="41"/>
 			</StackPanel>
 		</TabItem>
-	</TabControl>
+	</TabControl>-->
 </Window>

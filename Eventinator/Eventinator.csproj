@@ -14,6 +14,8 @@
     <None Remove="Assets\Fonts\fa-regular-400.woff2" />
     <None Remove="Assets\Fonts\fa-solid-900.woff2" />
     <None Remove="Assets\ImageSetCorrector.py" />
+    <None Remove="Assets\MyBase2XMLConverter.py" />
+    <None Remove="Assets\Storager.xml" />
     <None Remove="assets\Воровалка.js" />
   </ItemGroup>
   <ItemGroup>
