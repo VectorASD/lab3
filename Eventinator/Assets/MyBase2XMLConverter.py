@@ -4,11 +4,27 @@ import json
 from base64 import b64encode
 import io
 from xml.sax.saxutils import escape 
+from PIL import Image
 
 #def secure(s): return json.dumps(s)[1:-1]
 def secure(s): return escape(str(s), entities={"'": "&apos;", '\"': "&quot;"})
 #print(secure("yeah </> \" lolos ' ... \\ meowww КОТ"))
 #exit()
+
+def croper(name, img):
+  size = len(img)
+  img = Image.open(io.BytesIO(img))
+  img = img.convert("RGB")
+  w, h = img.width, img.height
+  d = abs(w - h) // 2
+  img = img.crop((d, 0, w - d, h)) if w > h else img.crop((0, d, w, h - d))
+  img = img.resize((256, 256), Image.LANCZOS)
+  res_img = io.BytesIO()
+  img.save(res_img, format="JPEG", quality=60)
+  res = res_img.getvalue()
+  #Image.open(io.BytesIO(res)).show()
+  print("    %s (%s x %s)    %s b. -> %s b." % (name, w, h, size, len(res)))
+  return res
 
 yeah = set()
 yeah2 = set()
@@ -23,12 +39,12 @@ with open("Storager.xml", "w", encoding="utf-8") as file:
       data = json.loads(zip.read("contNet.json"))
       for event in data:
         date, cats, title, (desc, price), img = event
-        print("   ", img)
         yeah.add(tuple(sorted(date)))
         yeah2 |= set(cats)
         
         date = date["month"] if len(date) == 1 else "%s %s (%s)" % (date["day"], date["month"], date["weekday"])
-        img = b64encode(zip.read("images/" + img)).decode("utf-8")
+        img = croper(img, zip.read("images/" + img))
+        img = b64encode(img).decode("utf-8")
         
         file.write("  <Event>\n")
         file.write('    <Header data="%s"/>\n' % secure(title))
@@ -42,8 +58,8 @@ with open("Storager.xml", "w", encoding="utf-8") as file:
         if price: file.write('    <Price data="%s"/>\n' % secure(price))
         file.write("  </Event>\n")
         count += 1
-        if count == 5: break
-    if count == 5: break
+        #if count == 5: break
+    #if count == 5: break
   file.write("</Events>\n")
 print(yeah) # Бывает только либо отшельник month, либо day + month + weekday, а третьего не дано ;'-}
 print(yeah2, len(yeah2)) # Всего зацеплено 55 категорий, хоть я и пропарсил только 9 требуемых страниц
