@@ -1,22 +1,17 @@
 using Avalonia;
 using Avalonia.Media;
 using Avalonia.Platform;
+using Avalonia.X11;
 using Eventinator.Models;
 using ReactiveUI;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
 namespace Eventinator.ViewModels {
     public class MainWindowViewModel: ViewModelBase {
-        public string LOL { get => "&#xf118;"; }
-        private readonly ObservableCollection<CityEvent> eventsList = new() {
-            //new CityEvent("lol"),
-            //new CityEvent("lol"),
-            //new CityEvent("lol")
-        };
-        public ObservableCollection<CityEvent> EventsList { get => eventsList; }
+
+        private string error = "";
+        public string Error { get => error; set => this.RaiseAndSetIfChanged(ref error, value); }
 
         public MainWindowViewModel() {
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
@@ -24,43 +19,21 @@ namespace Eventinator.ViewModels {
             try {
                 var stream = assets.Open(new Uri("resm:Eventinator.Assets.Storager.xml"));
             } catch (Exception ex) {
-                Items.Add(new Item { Name = "LOL " + ex, Color = new SolidColorBrush(Colors.Red) });
+                Error = "LOL " + ex;
             }
         }
 
-        private ObservableCollection<Item> items = new() {
-            new Item { Name = "RedName", Color = new SolidColorBrush(Colors.Red) },
-            new Item { Name = "GreenName", Color = new SolidColorBrush(Colors.Green) },
-            new Item { Name = "PurpleName", Color = new SolidColorBrush(Colors.Purple) },
-            new Item { Name = "BlueName", Color = new SolidColorBrush(Colors.Blue) },
-            new Item { Name = "OrangeName", Color = new SolidColorBrush(Colors.Orange) },
-            new Item { Name = "RedName", Color = new SolidColorBrush(Colors.Red) },
-            new Item { Name = "GreenName", Color = new SolidColorBrush(Colors.Green) },
-            new Item { Name = "PurpleName", Color = new SolidColorBrush(Colors.Purple) },
-            new Item { Name = "BlueName", Color = new SolidColorBrush(Colors.Blue) },
-            new Item { Name = "OrangeName", Color = new SolidColorBrush(Colors.Orange) },
-            new Item { Name = "RedName", Color = new SolidColorBrush(Colors.Red) },
-            new Item { Name = "GreenName", Color = new SolidColorBrush(Colors.Green) },
-            new Item { Name = "PurpleName", Color = new SolidColorBrush(Colors.Purple) },
-            new Item { Name = "BlueName", Color = new SolidColorBrush(Colors.Blue) },
-            new Item { Name = "OrangeName", Color = new SolidColorBrush(Colors.Orange) },
-            new Item { Name = "RedName", Color = new SolidColorBrush(Colors.Red) },
-            new Item { Name = "GreenName", Color = new SolidColorBrush(Colors.Green) },
-            new Item { Name = "PurpleName", Color = new SolidColorBrush(Colors.Purple) },
-            new Item { Name = "BlueName", Color = new SolidColorBrush(Colors.Blue) },
-            new Item { Name = "OrangeName", Color = new SolidColorBrush(Colors.Orange) },
-            new Item { Name = "RedName", Color = new SolidColorBrush(Colors.Red) },
-            new Item { Name = "GreenName", Color = new SolidColorBrush(Colors.Green) },
-            new Item { Name = "PurpleName", Color = new SolidColorBrush(Colors.Purple) },
-            new Item { Name = "BlueName", Color = new SolidColorBrush(Colors.Blue) },
-            new Item { Name = "OrangeName", Color = new SolidColorBrush(Colors.Orange) },
+        TabItem[] tabItems = new TabItem[] {
+            new TabItem("\xf118 Для детей", "kids"),
+            new TabItem("\xf119 Спорт", "wellness"),
+            new TabItem("\xf11a Культура", "culture"),
+            new TabItem("\xf11b Экскурсии", "excursion"),
+            new TabItem("\xf11c Образ жизни", "lifestyle"),
+            new TabItem("\xf11d Вечеринки", "parties"),
+            new TabItem("\xf11e Образование", "study"),
+            new TabItem("\xf11f Онлайн", "online"),
+            new TabItem("\xf120 Шоу", "shows"),
         };
-
-        public ObservableCollection<Item> Items {
-            get { return items; }
-            set {
-                this.RaiseAndSetIfChanged(ref items, value);
-            }
-        }
+        public TabItem[] TabItems { get => tabItems; }
     }
 }

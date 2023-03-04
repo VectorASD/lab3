@@ -16,6 +16,7 @@
     <None Remove="Assets\ImageSetCorrector.py" />
     <None Remove="Assets\MyBase2XMLConverter.py" />
     <None Remove="Assets\Storager.xml" />
+    <None Remove="Assets\vectorasd-logo.ico" />
     <None Remove="assets\Воровалка.js" />
   </ItemGroup>
   <ItemGroup>

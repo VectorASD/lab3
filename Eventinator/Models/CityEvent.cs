@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eventinator.Models {
     public class CityEvent {
-        public CityEvent(string title, string desc, string image, string date, string[] cats, string price) {
+        public CityEvent(string title, string desc, string image, string date, string[] cats, string grand_cat, string price) {
             Header = title;
             Description = desc;
             Date = date;
-            this.cats = cats;
+            Cats = cats;
+            GrandCat = grand_cat;
             Price = price;
 
             byte[] bytes = Convert.FromBase64String(image);
@@ -23,8 +19,14 @@ namespace Eventinator.Models {
         public string Description { get; }
         public Avalonia.Media.Imaging.Bitmap Image { get; }
         public string Date { get; }
-        private string[] cats;
         public string Price { get; }
 
+        private string[] Cats;
+        private string GrandCat;
+        public bool CheckCat(string scat) {
+            foreach (var cat in Cats)
+                if (cat == scat) return true;
+            return GrandCat == scat;
+        }
     }
 }

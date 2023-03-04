@@ -6,102 +6,78 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
 		Width="800" Height="800"
         x:Class="Eventinator.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/vectorasd-logo.ico"
         Title="Eventinator"
 		xmlns:local="clr-namespace:Eventinator.Models">
 	
 	<Window.Styles>
-
-		<Style Selector="TabControl">
-			<Setter Property="Background" Value="#F0F0F0"/>
-			<Setter Property="Height" Value="120"/>
+		<Style Selector="ItemsControl TextBlock">
+			<Setter Property="TextWrapping" Value="Wrap"/>
+			<Setter Property="MaxWidth" Value="256"/>
+			<Setter Property="TextTrimming" Value="WordEllipsis"/>
+			<Setter Property="Foreground" Value="#48F"/>
 		</Style>
-		<Style Selector="TabControl WrapPanel">
-			<Setter Property="Background" Value="#2B579A"/>
+		<Style Selector="Border.b1">
+			<Setter Property="Background" Value="#8FA"/>
+			<Setter Property="BorderBrush" Value="#00F"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="CornerRadius" Value="8"/>
+			<Setter Property="Padding" Value="8"/>
 		</Style>
-
-		<Style Selector="TabItem">
-			<Setter Property="FontSize" Value="12"/>
-			<Setter Property="Height" Value="34"/>
-			<Setter Property="VerticalAlignment" Value="Center"/>
-			<Setter Property="Background" Value="#2B579A"/>
-			<Setter Property="Foreground" Value="#F0F0F0"/>
-			<Setter Property="Margin" Value="0 0 0 0"/>
-			<Setter Property="Padding" Value="10 0"/>
+		<Style Selector="Border.b2">
+			<Setter Property="Background" Value="#FFA"/>
+			<Setter Property="Margin" Value="0 8 0 0"/>
 		</Style>
-		<Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-			<Setter Property="Background" Value="#124078"/>
+		<Style Selector="Border.b3">
+			<Setter Property="Margin" Value="0 8 0 0"/>
 		</Style>
-
-		<Style Selector="TabItem:focus">
-			<Setter Property="Foreground" Value="#2B579A"/>
-			<Setter Property="Margin" Value="0 0 0 0"/>
-			<Setter Property="Padding" Value="10 0"/>
-		</Style>
-		<Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
-			<Setter Property="Background" Value="#f0f0f0"/>
-		</Style>
-
-		<Style Selector="TabItem:selected">
-			<Setter Property="Foreground" Value="#2B579A"/>
-			<Setter Property="Margin" Value="0 0 0 0"/>
-			<Setter Property="Padding" Value="10 0"/>
-		</Style>
-		<Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-			<Setter Property="Background" Value="#f0f0f0"/>
-		</Style>
-
 	</Window.Styles>
 
-	<StackPanel>
-		<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="Welcome &#xf118; Back"/>
-		<Button FontFamily="Fonts/fontawesome.ttf" Content="Welcome &#xf118; Back"/>
-		<Button FontFamily="Fonts/fontawesome.odt" Content="Welcome &#xf118; Back"/>
-		<Button FontFamily="fontawesome.ttf" Content="Welcome &#xf118; Back"/>
-		<Button FontFamily="fontawesome" Content="Welcome &#xf118; Back"/>
-		<Button FontFamily="/Assets/Fonts/fontawesome" Content="Welcome &#xf118; Back"/>
-		<ItemsControl Items="{Binding Items}">
-			<ItemsControl.ItemTemplate>
-				<DataTemplate DataType="{x:Type local:Item}">
-					<Grid Margin="10" RowDefinitions="0.5*,0.5*">
-						<Rectangle Height="100" Width="100" Fill="{Binding Color}"/>
-						<TextBlock Grid.Row="1" Text="{Binding Name}"/>
-
-					</Grid>
-				</DataTemplate>
-			</ItemsControl.ItemTemplate>
-			<ItemsControl.ItemsPanel>
-				<ItemsPanelTemplate>
-					<WrapPanel/>
-				</ItemsPanelTemplate>
-			</ItemsControl.ItemsPanel>
-		</ItemsControl>
-	</StackPanel>
-	
-	<!--<TabControl>
-		<TabItem Header="Circle" VerticalAlignment="Center">
-			<StackPanel>
-				<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-				<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="Welcome &#xf118; Back"/>
-			</StackPanel>
-		</TabItem>
-		<TabItem Header="Triangle" VerticalAlignment="Center">
-			<WrapPanel>
-				<StackPanel>
-					<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-					<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="{Binding LOL}"/>
-				</StackPanel>
-				<StackPanel>
-					<TextBlock Text="I am in the circle page !" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-					<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="{Binding LOL}"/>
-				</StackPanel>
-			</WrapPanel>
-		</TabItem>
-		<TabItem Header="Square" VerticalAlignment="Center">
-			<StackPanel Orientation="Horizontal">
-				<TextBlock Text="Square : " HorizontalAlignment="Left" VerticalAlignment="Center"/>
-				<Rectangle Fill="Blue" Width="63" Height="41"/>
-			</StackPanel>
-		</TabItem>
-	</TabControl>-->
+	<ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+		<StackPanel>
+			<TextBlock Text="{Binding Error}"/>
+			<!-- Тут не подключаются глифовые иконки... -->
+			<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="Welcome &#xf118; Back"/>
+			<TabControl Items="{Binding TabItems}">
+				<TabControl.ItemTemplate>
+					<DataTemplate>
+						<!-- Тут не подключаются глифовые иконки... -->
+						<TextBlock FontFamily="/Assets/Fonts/fontawesome.ttf" Text="{Binding Header}" />
+					</DataTemplate>
+				</TabControl.ItemTemplate>
+				<TabControl.ContentTemplate>
+					<DataTemplate>
+						<ItemsControl Items="{Binding EventsList}">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate DataType="{x:Type local:CityEvent}">
+									<Grid Margin="10" RowDefinitions="*,*">
+										<Image Height="256" Width="256" Source="{Binding Image}"/>
+										<Border Grid.Row="1" Classes="b1">
+											<StackPanel>
+												<TextBlock Text="{Binding Header}"/>
+												<Border Classes="b2" IsVisible="{Binding Date, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+													<TextBlock Text="{Binding Date}"/>
+												</Border>
+												<Border Classes="b3" IsVisible="{Binding Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+													<TextBlock Text="{Binding Description}"/>
+												</Border>
+												<Border Classes="b2" IsVisible="{Binding Price, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+													<TextBlock Text="{Binding Price}"/>
+												</Border>
+											</StackPanel>
+										</Border>
+									</Grid>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+							<ItemsControl.ItemsPanel>
+								<ItemsPanelTemplate>
+									<WrapPanel/>
+								</ItemsPanelTemplate>
+							</ItemsControl.ItemsPanel>
+						</ItemsControl>
+					</DataTemplate>
+				</TabControl.ContentTemplate>
+			</TabControl>
+		</StackPanel>
+	</ScrollViewer>
 </Window>
