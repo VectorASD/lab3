@@ -2,14 +2,7 @@ using Avalonia;
 using Avalonia.Media;
 using Avalonia.Platform;
 using Avalonia.X11;
-using DynamicData.Kernel;
 using Eventinator.Models;
-using ReactiveUI;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Xml.Linq;
 
 namespace Eventinator.ViewModels {
     public class MainWindowViewModel: ViewModelBase {

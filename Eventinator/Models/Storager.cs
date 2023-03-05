@@ -1,7 +1,5 @@
-using DynamicData;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Xml.Linq;
 
 namespace Eventinator.Models {
