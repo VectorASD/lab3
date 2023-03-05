@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Eventinator.Models;
 using Eventinator.ViewModels;
 using Eventinator.Views;
 
@@ -16,7 +17,6 @@ namespace Eventinator {
                     DataContext = new MainWindowViewModel(),
                 };
             }
-
             base.OnFrameworkInitializationCompleted();
         }
     }

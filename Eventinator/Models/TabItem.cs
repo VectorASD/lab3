@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,14 +13,19 @@ namespace Eventinator.Models {
         public ObservableCollection<CityEvent> EventsList {
             get {
                 var res = new ObservableCollection<CityEvent>();
-                foreach (var Event in Storager.eventsList)
+                foreach (var Event in Storager.Me.eventsList)
                     if (Event.CheckCat(Category)) res.Add(Event);
                 return res;
             }
         }
-        public TabItem(string header, string cat) {
+        public Avalonia.Media.Imaging.Bitmap CatImage { get; }
+        public TabItem(string header, string cat, string image) {
             Header = header;
             Category = cat;
+
+            byte[] bytes = Convert.FromBase64String(image);
+            Stream stream = new MemoryStream(bytes);
+            CatImage = new Avalonia.Media.Imaging.Bitmap(stream);
         }
     }
 }

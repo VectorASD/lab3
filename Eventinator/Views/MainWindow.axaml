@@ -36,13 +36,13 @@
 	<ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 		<StackPanel>
 			<TextBlock Text="{Binding Error}"/>
-			<!-- Тут не подключаются глифовые иконки... -->
-			<Button FontFamily="/Assets/Fonts/fontawesome.ttf" Content="Welcome &#xf118; Back"/>
 			<TabControl Items="{Binding TabItems}">
 				<TabControl.ItemTemplate>
 					<DataTemplate>
-						<!-- Тут не подключаются глифовые иконки... -->
-						<TextBlock FontFamily="/Assets/Fonts/fontawesome.ttf" Text="{Binding Header}" />
+						<Grid ColumnDefinitions="*, *">
+							<Image Height="24" Width="24" Source="{Binding CatImage}"/>
+							<TextBlock Grid.Column="1" Text="{Binding Header}" />
+						</Grid>
 					</DataTemplate>
 				</TabControl.ItemTemplate>
 				<TabControl.ContentTemplate>

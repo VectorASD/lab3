@@ -21,8 +21,8 @@ namespace Eventinator.Models {
         public string Date { get; }
         public string Price { get; }
 
-        private string[] Cats;
-        private string GrandCat;
+        private readonly string[] Cats;
+        private readonly string GrandCat;
         public bool CheckCat(string scat) {
             foreach (var cat in Cats)
                 if (cat == scat) return true;
