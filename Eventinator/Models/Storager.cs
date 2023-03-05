@@ -39,7 +39,7 @@ namespace Eventinator.Models {
                 string s_date = Val(date.Attribute("data"));
                 List<string> s_cats = new();
                 foreach (XElement cat in cats.Elements("CategoryItem")) s_cats.Add(Val(cat.Attribute("data")));
-                string s_price = price == null ? "" : Val(price.Attribute("data"));
+                string s_price = price == null ? "" : Val(price.Attribute("data")) + " \x20bd";
                 string grand = Val(cats.Attribute("grand"));
                 list.Add(new CityEvent(s_title, s_desc, s_img, s_date, s_cats.ToArray(), grand, s_price));
             }

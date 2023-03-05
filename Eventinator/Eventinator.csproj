@@ -18,7 +18,6 @@
   <ItemGroup>
     <AvaloniaResource Include="Misc\ImageSetCorrector.py" />
     <AvaloniaResource Include="Misc\Воровалка.js" />
-    <AvaloniaResource Include="Storager.xml" />
   </ItemGroup>
   <ItemGroup>
     <!--This helps with theme dll-s trimming.

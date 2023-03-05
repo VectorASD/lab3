@@ -16,6 +16,7 @@
 			<Setter Property="MaxWidth" Value="256"/>
 			<Setter Property="TextTrimming" Value="WordEllipsis"/>
 			<Setter Property="Foreground" Value="#48F"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
 		</Style>
 		<Style Selector="Border.b1">
 			<Setter Property="Background" Value="#8FA"/>
@@ -54,15 +55,15 @@
 										<Image Height="256" Width="256" Source="{Binding Image}"/>
 										<Border Grid.Row="1" Classes="b1">
 											<StackPanel>
-												<TextBlock Text="{Binding Header}"/>
+												<TextBlock Text="{Binding Header}" FontWeight="Bold" FontSize="20"/>
 												<Border Classes="b2" IsVisible="{Binding Date, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
-													<TextBlock Text="{Binding Date}"/>
+													<TextBlock Text="{Binding Date}" FontWeight="Bold"/>
 												</Border>
 												<Border Classes="b3" IsVisible="{Binding Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
 													<TextBlock Text="{Binding Description}"/>
 												</Border>
 												<Border Classes="b2" IsVisible="{Binding Price, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
-													<TextBlock Text="{Binding Price}"/>
+													<TextBlock Text="{Binding Price}" FontWeight="Bold"/>
 												</Border>
 											</StackPanel>
 										</Border>
