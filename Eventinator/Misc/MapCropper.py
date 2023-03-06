@@ -30,7 +30,8 @@ def png_compressor(box):
   if show:
     Image.open(io.BytesIO(res)).show()
     exit()
-  return b64encode(res).decode("utf-8")
+  #return b64encode(res).decode("utf-8")
+  return res
 
 img = Image.open("IconMap.png") # Нужно обратить внимание на то, что здесь режим палитры
 print(img)
@@ -54,4 +55,7 @@ for pos, i in enumerate(pixels):
     count = 0
 
 for n, Bin in enumerate(res):
-  print('private string img_%c = "%s";' % (chr(ord('a') + n % 26), Bin))
+  n = chr(ord('a') + n % 26)
+  #print('private string img_%c = "%s";' % (n, Bin))
+  with open("icons/img_%c.png" % n, "wb") as file: file.write(Bin)
+print("Yeah!")

@@ -41,7 +41,8 @@
 				<TabControl.ItemTemplate>
 					<DataTemplate>
 						<Grid ColumnDefinitions="*, *">
-							<Image Height="24" Width="24" Source="{Binding CatImage}"/>
+							<!--Image Height="24" Width="24" Source="{Binding Source={StaticResource img_b}, Path=Source}"/> Программно затолкать само слово img_b я походу не могу, тогда делаем (при том очень простой) велосипед в TabItem классе... -->
+							<Image Height="24" Width="24" Source="{Binding CategoryImage}"/>
 							<TextBlock Grid.Column="1" Text="{Binding Header}" />
 						</Grid>
 					</DataTemplate>

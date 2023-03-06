@@ -9,4 +9,16 @@
     <Application.Styles>
         <FluentTheme Mode="Light"/>
     </Application.Styles>
+
+	<Application.Resources>
+		<Image x:Key="img_a" Source="/Assets/Icons/img_a.png" />
+		<Image x:Key="img_b" Source="/Assets/Icons/img_b.png" />
+		<Image x:Key="img_c" Source="/Assets/Icons/img_c.png" />
+		<Image x:Key="img_d" Source="/Assets/Icons/img_d.png" />
+		<Image x:Key="img_e" Source="/Assets/Icons/img_e.png" />
+		<Image x:Key="img_f" Source="/Assets/Icons/img_f.png" />
+		<Image x:Key="img_g" Source="/Assets/Icons/img_g.png" />
+		<Image x:Key="img_h" Source="/Assets/Icons/img_h.png" />
+		<Image x:Key="img_i" Source="/Assets/Icons/img_i.png" />
+	</Application.Resources>
 </Application>

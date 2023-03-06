@@ -7,8 +7,8 @@ namespace Eventinator.Models {
             Header = title;
             Description = desc;
             Date = date;
-            Cats = cats;
-            GrandCat = grand_cat;
+            Categories = cats;
+            GrandCategoty = grand_cat;
             Price = price;
 
             byte[] bytes = Convert.FromBase64String(image);
@@ -21,12 +21,12 @@ namespace Eventinator.Models {
         public string Date { get; }
         public string Price { get; }
 
-        private readonly string[] Cats;
-        private readonly string GrandCat;
+        private readonly string[] Categories;
+        private readonly string GrandCategoty;
         public bool CheckCat(string scat) {
-            foreach (var cat in Cats)
+            foreach (var cat in Categories)
                 if (cat == scat) return true;
-            return GrandCat == scat;
+            return GrandCategoty == scat;
         }
     }
 }

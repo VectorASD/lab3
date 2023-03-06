@@ -9,15 +9,13 @@
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+	<AvaloniaResource Include="Assets\Icons\**" />
     <None Remove=".gitignore" />
     <None Remove="Assets\ImageSetCorrector.py" />
     <None Remove="Assets\Storager.xml" />
     <None Remove="Assets\vectorasd-logo.ico" />
-    <None Remove="assets\Воровалка.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <AvaloniaResource Include="Misc\ImageSetCorrector.py" />
-    <AvaloniaResource Include="Misc\Воровалка.js" />
+    <None Remove="Assets\Воровалка.js" />
+	<None Remove="Misc\Воровалка.js" />
   </ItemGroup>
   <ItemGroup>
     <!--This helps with theme dll-s trimming.
