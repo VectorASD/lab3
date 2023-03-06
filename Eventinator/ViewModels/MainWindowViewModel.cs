@@ -19,15 +19,15 @@ namespace Eventinator.ViewModels {
         public static string Error { get => Storager.Me.error; }
 
         readonly TabItem[] tabItems = new TabItem[] {
-            new TabItem("Äëÿ äåòåé", "kids", img_a),
-            new TabItem("Ñïîðò", "wellness", img_b),
-            new TabItem("Êóëüòóðà", "culture", img_c),
-            new TabItem("Ýêñêóðñèè", "excursion", img_d),
-            new TabItem("Îáðàç æèçíè", "lifestyle", img_e),
-            new TabItem("Âå÷åðèíêè", "parties", img_f),
-            new TabItem("Îáðàçîâàíèå", "study", img_g),
-            new TabItem("Îíëàéí", "online", img_h),
-            new TabItem("Øîó", "shows", img_i),
+            new TabItem("Ð”Ð»Ñ Ð´ÐµÑ‚ÐµÐ¹", "kids", img_a),
+            new TabItem("Ð¡Ð¿Ð¾Ñ€Ñ‚", "wellness", img_b),
+            new TabItem("ÐšÑƒÐ»ÑŒÑ‚ÑƒÑ€Ð°", "culture", img_c),
+            new TabItem("Ð­ÐºÑÐºÑƒÑ€ÑÐ¸Ð¸", "excursion", img_d),
+            new TabItem("ÐžÐ±Ñ€Ð°Ð· Ð¶Ð¸Ð·Ð½Ð¸", "lifestyle", img_e),
+            new TabItem("Ð’ÐµÑ‡ÐµÑ€Ð¸Ð½ÐºÐ¸", "parties", img_f),
+            new TabItem("ÐžÐ±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ðµ", "study", img_g),
+            new TabItem("ÐžÐ½Ð»Ð°Ð¹Ð½", "online", img_h),
+            new TabItem("Ð¨Ð¾Ñƒ", "shows", img_i),
         };
         public TabItem[] TabItems { get => tabItems; }
     }
